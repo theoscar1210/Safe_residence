@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autorizacion-Safe Residence</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="icon" href="Imagenes/logo.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <div class="contenedor_logo_izquierdo">
+            <img src="Imagenes/logo.png" alt="logo"> 
+        </div>
+    </header>
+    <main>
+       
+        <!--formulario  Autorizacion Ingresos-->
+        <div class="contenedor_autorizacion">
+            <form action=""class="formulario-autorizacion_ingresos">
+                <h2>Autorización Ingresos</h2>
+                <div class="contenedor_fecha">
+                    <label for="fecha_inicial"> Fecha Inical</label>
+                    <input id="fecha_inicial" class="fecha" type="datetime-local" required>
+                    <label for="fecha_final">Fecha Final</label>
+                    <input id="fecha_final" class="fecha" type="datetime-local" required>
+                </div>
+                <input type="text" placeholder="Nombres" required>
+                <input type="text" placeholder="Apellidos" required>
+                <input type="number" placeholder="Cedula" required>
+                <label for="tipo_de_autorizacion">Tipo de Autorización</label>
+                <select id="tipo autorizacion" name="tipo autorizacion" required>
+                    <option value="propietario">Visitante</option>
+                    <option value="guarda de seguridad">Contratista</option>
+                </select><br><br>
+                <label for="observaciones">Observaciones</label>
+                <textarea name="observaciones" id="observaciones" rows="4" cols="50"></textarea><br><br>
+                <div class="checkbox_container">
+                    <input type="checkbox" id="checkbox3" name="checkbox3" required>
+                    <label for="checkbox3">Estadia indefinida</label>
+                </div>
+                  <!--boton de cerrar sesion -->
+           
+             <!--boton autorizar-->
+             <div class="botones">
+                <button type="submit"class="boton_autorizar">Autorizar</button>
+             </div>
+           
+             <!--menu del propietario lateral derecho -->
+          
+            <div class="contenedor_menu_2">
+                <a href="#">Regresar</a>
+                <a href="autorizacion_ingresos.html">               
+                <i class="fa-solid fa-file-circle-plus"></i>
+                <a href="autorizacion_ingresos.html">Nuevo Invitado</a>
+            </a>
+            <a href="autorizaciones.html">                
+                <i class="fa-regular fa-pen-to-square"></i>
+                <a href="autorizaciones.html">Mis Autorizaciones</a>
+            </a>
+            <a href="inicio_residente.html">                              
+                <i class="fa-solid fa-house"></i>
+                <a href="inicio_residente.html">Inicio</a>
+            </a>             
+            </div>
+        </form>
+    </div>
+    <div class="contenedor_cerrar_sesion_consulta">
+        <a href="login.html" class="boton_cerrar_sesion">Cerrar Sesión</a>
+    </div>
+    
+</main>
+
+
+
+    
+    
+</body>
+</html>

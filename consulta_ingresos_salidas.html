@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta ingresos y salidas-Safe-Residence</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="icon" href="Imagenes/logo.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <!--logo-->
+    <header>
+        <div class="contenedor_logo_izquierdo">
+            <img src="Imagenes/logo.png" alt="logo"> 
+        </div>
+    </header>
+    <main>
+        <!--seleccion de fechas de consulta y tipos de consulta -->
+        <div class="contenedor_cosultas_admon">
+            <h2>Consulta Ingresos y Salidas</h2>
+        </div>
+        <div class="contenedorFechas_Ing_salid">
+            <h3>Especifique un Rango de Fechas, El Estado y el Tipo de Ingreso</h3>
+            <div class="rango">
+                <label for="Estado">Estado</label>
+                <select name="estado" id="estado">
+                    <option value="En el edificio">En el edificio</option>
+                    <option value="Ingresos">Ingresos</option>
+                    <option value="Salidas">Salidas</option>
+                </select>
+                <label for="fecha">Fecha inicial</label>
+                <input id="fecha" class="fecha" type="datetime-local">
+                <label for="fecha">Fecha Final</label>
+                <input id="fecha" class="fecha" type="datetime-local">
+                <label for="datos">Datos a Consultar</label>
+                <select name="datos_consulta" id="datos_consulta">
+                    <option value="Todos_los_Ingresos">Todos los Ingresos</option>
+                    <option value="Todos_los_Ingresos">Todos los Ingresos</option>
+                    <option value="Todos_los_Ingresos">Todos los Ingresos</option>
+                </select>
+            </div>
+             <!--Tabla de consulta -->
+            <div class="contenedor_tabla_consulta">
+                <table>
+                    <tr>
+                        <th>Tipo de Ingreso</th>
+                        <th>Ingresos Anteriores</th>
+                        <th>Ingresos</th>
+                        <th>Salidas</th>
+                        <th>En el Edificio</th>
+                    </tr>
+                    <tr>
+                        <td>Contratista</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>Propietarios</td>
+                        <td>50</td>
+                        <td>50</td>
+                        <td>10</td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <td>Visitantes</td>
+                        <td>10</td>
+                        <td>10</td>
+                        <td>5</td>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <td>Empleados Fijos</td>
+                        <td></td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>0</td>
+                    </tr>
+                </table>                
+            </div>
+             <!--Tabla de la lista detallada -->
+            <div class="contenedor_lista_detallada">
+                <h3>Lista Detallada de ingresos</h3>
+                <table>
+                    <tr>
+                        <th>Apto</th>
+                        <th>Indentificacion</th>
+                        <th>Nombre</th>
+                        <th>Tipo de Ingreso</th>
+                        <th>Hora de Ingreso</th>
+                        <th>Observaciones</th>
+                    </tr>
+                    <tr>
+                        <td>----</td>
+                        <td>----</td>
+                        <td>----</td>
+                        <td>----</td>
+                        <td>----</td>
+                        <td>----</td>
+                    </tr>
+                    <tr>
+                        <td>----</td>
+                        <td>----</td>
+                        <td>----</td>
+                        <td>----</td>
+                        <td>----</td>
+                        <td>----</td>
+                    </tr>
+                    <tr>
+                        <td>----</td>
+                        <td>----</td>
+                        <td>----</td>
+                        <td>----</td>
+                        <td>----</td>
+                        <td>----</td>
+                    </tr>
+                </table>           
+            </div>
+        </div>
+        <!--boton de cerrar sesion -->
+        <div class="contenedor_cerrar_sesion_consulta">
+            <a href="login.html" class="boton_cerrar_sesion">Cerrar Sesión</a>    
+         <!--menu lateral derecho -->
+        <div class="contenedor_menu">
+            <a href="index.htm">Regresar</a>
+            
+            <a href="#">
+                <i class="fa-regular fa-file-pdf"></i>
+                <i class="fa-solid fa-print"></i>
+                <a href="#">Imprimir PDF</a>
+            </a>
+            <a href="#">
+                <i class="fa-regular fa-file-excel"></i>
+                <a href="#">Exportar Xls</a>
+            </a>      
+            <a href="index.htm">
+                <i class="fa-solid fa-house"></i>
+                <a href="index.htm">Inicio</a>
+            </a>         
+        </div>
+
+
+
+    </main>
+    
+</body>
+</html>
