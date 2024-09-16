@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     $password_diferente = 0;
 
     // Verificamos si el usuario ya existe en la base de datos
-    $stmt = $conn->prepare('SELECT usuario FROM usuarios WHERE usuario = :usuario and $email = :email and cedula = :cedula ' );
+    $stmt = $conn->prepare('SELECT usuario FROM usuarios WHERE usuario = :usuario and email = :email and cedula = :cedula ' );
     $stmt->bindParam(':usuario', $usuario);
     $stmt->bindParam(':email', $email);
     $stmt->bindParam(':cedula', $cedula);
@@ -34,13 +34,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     if( $stmt->rowCount() > 0){
         $d_insertados = 0;
         $u_existente = 1;//usuario ya existe
+        
     }else if($password != $c_password){
         $d_insertados = 0;
         $password_diferente = 1;//contraseña no coincide
+        
     }else{
         
         
-// Insertamos el nuevo usuario
+    // Insertamos el nuevo usuario
         $stmt2 = $conn->prepare('INSERT INTO usuarios (nombres, apellidos, cedula, telefono, usuario, contraseña, email, id_rol)
         VALUES (:nombres, :apellidos, :cedula, :telefono, :usuario, :password, :email, :rol)');
         
@@ -57,12 +59,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $stmt2->execute();
 
         $d_insertados = 1;//datos insertados
+
+        
     };
     
+ 
 
     
 
-    header('confirmarUsuario.php');
-    exit();
+    
 } ;
 
+
+header('Location: confirmarUsuario.php');
+exit();
