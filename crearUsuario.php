@@ -1,5 +1,8 @@
 <?php
 
+session_start();//iniciamos sesion para enviar datos de variables a crear_usuario.php
+
+
 //incluimos el archivo que conecta a la base de datos
 include("conecta.php");
 
@@ -19,30 +22,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     $c_password = $_POST['c_password'];
 
     $d_insertados = 0; //variable 0 datos no insertados, 1 datos insertados
-    $u_existente = 0;
-    $password_diferente = 0;
+    $u_existente = 0; //variable 0 usuario no existe, 1 usuario existe en la base de datos
+    $password_diferente = 0; // variable 0 contraseñas iguales, 1 contraseñas diferentes
+    
 
     // Verificamos si el usuario ya existe en la base de datos
-    $stmt = $conn->prepare('SELECT usuario FROM usuarios WHERE usuario = :usuario and email = :email and cedula = :cedula ' );
+    $stmt = $conn->prepare('SELECT usuario FROM usuarios WHERE usuario = :usuario  and cedula = :cedula ' );
     $stmt->bindParam(':usuario', $usuario);
-    $stmt->bindParam(':email', $email);
     $stmt->bindParam(':cedula', $cedula);
     $stmt->execute();
 
     
     
-    if( $stmt->rowCount() > 0){
-        $d_insertados = 0;
-        $u_existente = 1;//usuario ya existe
+    if ($stmt->rowCount() > 0) {
+        $u_existente =1;
+        $_SESSION['u_existente'] = 1;
+        header('Location:crear_usuario.php');
+        exit();
+    }
+    if ($password != $c_password) {
+        $password_diferente = 1;
+        $_SESSION['password_diferente'] = 1;
+        header('Location:crear_usuario.php');
+        exit();
+    }
+    
+    if($u_existente ==0 and $password_diferente ==0){
         
-    }else if($password != $c_password){
-        $d_insertados = 0;
-        $password_diferente = 1;//contraseña no coincide
         
-    }else{
-        
-        
-    // Insertamos el nuevo usuario
+        // Insertamos el nuevo usuario
         $stmt2 = $conn->prepare('INSERT INTO usuarios (nombres, apellidos, cedula, telefono, usuario, contraseña, email, id_rol)
         VALUES (:nombres, :apellidos, :cedula, :telefono, :usuario, :password, :email, :rol)');
         
@@ -58,18 +66,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
         $stmt2->execute();
 
+        $stmt3 = $conn->prepare('SELECT id_usuario from usuarios where usuario = :usuario and cedula = :cedula and id_rol = 4');
+        $stmt3->bindParam(':cedula', $cedula);
+        $stmt3->bindParam(':usuario', $usuario);
+        $stmt3->execute();
+
+        // Accedemos al id_usuario
+        $id_usuario_row = $stmt3->fetch(PDO::FETCH_ASSOC);
+        $id_usuario = intval($id_usuario_row['id_usuario']);
+
+        $stmt4 = $conn->prepare('INSERT INTO propietarios(id_usuario) VALUES(:id_usuario)');
+        $stmt4->bindParam(':id_usuario', $id_usuario);
+        $stmt4->execute();
+
+        
+        // Recuperamos el id_propietario
+        $stmt5 = $conn->prepare('SELECT id_propietario FROM propietarios WHERE id_usuario = :id_usuario');
+        $stmt5->bindParam(':id_usuario', $id_usuario);
+        $stmt5->execute();
+        $id_propietario_row = $stmt5->fetch(PDO::FETCH_ASSOC);
+        $id_propietario = intval($id_propietario_row['id_propietario']);
+
+        $stmt6 = $conn->prepare('INSERT INTO apartamentos(numero, id_propietario) VALUES(:numero, :id_propietario)');
+        $stmt6->bindParam(':id_propietario', $id_propietario);
+        $stmt6->bindParam(':numero', $apartamento);
+        $stmt6->execute();
+
+        
+
         $d_insertados = 1;//datos insertados
+        $_SESSION['d_insertados'] = 1;
+        
+        header('Location:crear_usuario.php');
+        exit();
 
         
     };
-    
- 
 
+    
+        
     
 
     
 } ;
 
-
-header('Location: confirmarUsuario.php');
-exit();
