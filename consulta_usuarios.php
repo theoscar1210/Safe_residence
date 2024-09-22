@@ -23,13 +23,14 @@
             <!--tabla con la informacion de consulta de usuarios-->
             <table action="consultaUsuarios.php" method="POST">
                 <tr>
-                    <th>Cedula</th>
+                    <th>id_usuario</th>
                     <th>Nombres</th>
                     <th>Apellidos</th>
-                    <th>Apto</th>
+                    <th>Cedula</th>
                     <th>Telefono</th>
                     <th>E-mail</th>
                     <th>Usuario</th>
+                    <th>Rol</th>
                     <th>Editar</th>
 
                 </tr>
@@ -41,13 +42,16 @@
                 $stmt->execute();
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     echo "<tr>";
-                    echo "<td>" . htmlspecialchars($row["cedula"]) . "</td>";
+                    echo "<td>" . htmlspecialchars($row["id_usuario"]) . "</td>";
+                    
                     echo "<td>" . htmlspecialchars($row["nombres"]) . "</td>";
                     echo "<td>" . htmlspecialchars($row["apellidos"]) . "</td>";
-                    echo "<td>" . htmlspecialchars($row["apartamento"]) . "</td>";
+                    echo "<td>" . htmlspecialchars($row["cedula"]) . "</td>";
+                    
                     echo "<td>" . htmlspecialchars($row["telefono"]) . "</td>";
                     echo "<td>" . htmlspecialchars($row["email"]) . "</td>";
                     echo "<td>" . htmlspecialchars($row["usuario"]) . "</td>";
+                    echo "<td>" . htmlspecialchars($row["rol"]) . "</td>";
                     echo "<td>
                         <div class='checkbox-container'>
                             <button>

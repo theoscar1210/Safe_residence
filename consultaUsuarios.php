@@ -6,11 +6,21 @@ session_start(); //iniciamos sesion para enviar datos de variables a crear_usuar
 include("conecta.php");
 
 //Seleccionando tabla "Usuarios"
-$query = "SELECT * FROM usuarios";
-$result = $conn->query($query);
+$query = "select u.id_usuario, 
+u.nombres,
+u.apellidos,
+u.cedula,
+u.telefono,
+u.email,
+u.usuario,
+r.rol
+from usuarios u
+join roles r
+on u.id_rol = r.id_rol;";
 
-if(!$result){
-    echo "Error de conexión";
-}else{
-    echo "Conexión exitosa";
+//ejecutamos la consulta 
+try{
+    $result = $conn->query($query);
+}catch(mysqli_sql_exception $e){
+    echo "Error ". $e->getMessage() ;
 }
