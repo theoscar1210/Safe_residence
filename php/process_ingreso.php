@@ -8,8 +8,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombres = $_POST['nombres'];
     $apellidos = $_POST['apellidos'];
     $cedula = $_POST['cedula'];
-    $apartamento = $_POST['apartamento'];
     $id_usuario = $_SESSION['id_usuario'];
+    $apartamento = $_POST['apartamento'];
     $observaciones = $_POST['observaciones'];
 
 
