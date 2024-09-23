@@ -129,17 +129,9 @@ h1 {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
-.btn_iniciar_sesion{
-    background-color: #063940;
-    font-size: 20px;
-    color: white;
-    border-radius: 20px;
-    width: 80px;
-    height: 20px;
-    padding: 10px;
-    text-align: center;
 
-}
+
+
 /* Estilos específicos para registro de nuevos usuarios vista administrador*/
 .contenedor_register{
     background-color:var(--color-backgraundMenu);

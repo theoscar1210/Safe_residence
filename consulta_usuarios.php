@@ -79,7 +79,7 @@
         </div>
         <!--boton de cerrar sesion -->
         <div class="contenedor_cerrar_sesion_consulta">
-            <a href="login.html" class="boton_cerrar_sesion">Cerrar Sesión</a>
+            <a href="index.php" class="boton_cerrar_sesion">Cerrar Sesión</a>
 
 
 
