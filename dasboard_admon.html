@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Safe Residence - Panel de Administración</title>
+    <link rel="stylesheet" href="css/estilos.css" />
+    <link rel="icon" href="Imagenes/logo.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <body>
+    <main>
+      <div class="contenedor_logo">
+        <header>
+          <img src="Imagenes/logo.png" alt="Logo Safe Residence" />
+          <h1>Bienvenido a nuestro sistema de registro</h1>
+        </header>
+      </div>
+      <!-- Botones de consultar ingresos, usuarios y crear perfil -->
+      <div class="contenedor_pantalla_admin">
+        <div class="botones_inicio">
+          <a href="consulta_ingresos_salidas.php" class="boton_admon"
+            >Consulta Ingresos y Salidas del Edificio</a
+          >
+          <a href="consultaUsuarios.php" class="boton_admon"
+            >Consulta de Usuarios de Safe Residence</a
+          >
+        </div>
+        <div>
+          <a href="/php/crear_usuario.php" class="boton_admon1"
+            >Crear Nuevo Perfil de Usuario</a
+          >
+        </div>
+      </div>
+      <!-- Botones de menú -->
+      <div class="contenedor_menu">
+        <a href="index.php">Regresar</a>
+        <a href="reportes.php">
+          <i class="fa-regular fa-pen-to-square"></i>
+          Reportes
+        </a>
+        <a href="admin_dashboard.php">
+          <i class="fa-solid fa-house"></i>
+          Inicio
+        </a>
+      </div>
+      <div class="contenedor_cerrar_sesion_consulta">
+        <a href="logout.php" class="boton_cerrar_sesion">Cerrar Sesión</a>
+      </div>
+    </main>
+  </body>
+</html>

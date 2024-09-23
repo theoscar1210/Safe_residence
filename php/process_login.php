@@ -21,9 +21,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute();
 
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
+        // Verificar si el usuario existe y si la contraseña es correcta
         if ($user && password_verify($password, $user['contraseña'])) {
-            $_SESSION['id'] = $user['cedula'];
+            // Almacenar el id_usuario en la sesión
+            $_SESSION['id_usuario'] = $user['id_usuario']; /// se realiza esta modificacion
+            $_SESSION['cedula'] = $user['cedula'];
             $_SESSION['nombre_usuario'] = $user['usuario'];
             $_SESSION['rol'] = $user['id_rol'];
 
