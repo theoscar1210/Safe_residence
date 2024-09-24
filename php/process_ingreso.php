@@ -11,9 +11,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id_usuario = $_SESSION['id_usuario'];
     $apartamento = $_POST['apartamento'];
     $observaciones = $_POST['observaciones'];
+    $rol = $_POST['rol']; //tipo de ingreso (propietario, autorizado, visitante)
+    $vehiculo = $_POST['vehiculo']; //medio de ingreso (vehiculo, bicicleta, camioneta)
 
 
-    //verificar si el usuario esta autenticado
+
 
     //fecha y hora actualizadas por el sistema 
     $fecha_actual = date('Y-m-d H:i:s');
@@ -23,13 +25,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //preparar para la consulta 
     try {
 
-        $stmt = $conn->prepare('INSERT INTO ingresos (fecha, h_ingreso, nombres, apellidos, cedula, id_usuario, observaciones, apartamento) VALUES (:fecha, :h_ingreso, :nombres, :apellidos, :cedula, :id_usuario, :observaciones, :apartamento)');
+        $stmt = $conn->prepare('INSERT INTO ingresos (fecha, h_ingreso, nombres, apellidos, cedula, id_usuario, observaciones, apartamento, rol, vehiculo) VALUES (:fecha, :h_ingreso, :nombres, :apellidos, :cedula, :id_usuario, :observaciones, :apartamento, :rol, :vehiculo)');
         $stmt->bindParam(':fecha', $fecha_actual);
         $stmt->bindParam(':h_ingreso', $hora_ingreso);
         $stmt->bindParam(':nombres', $nombres);
         $stmt->bindParam(':apellidos', $apellidos);
         $stmt->bindParam(':cedula', $cedula);
         $stmt->bindParam(':apartamento', $apartamento);
+        $stmt->bindParam(':rol', $rol);
+        $stmt->bindParam(':vehiculo', $vehiculo);
         $stmt->bindParam(':id_usuario', $id_usuario);
         $stmt->bindParam(':observaciones', $observaciones);
 
