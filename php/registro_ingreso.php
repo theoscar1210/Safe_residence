@@ -79,7 +79,7 @@ if (isset($_SESSION['success'])) {
         </div>
         <!--menu lateral derecho vista del vigilante-->
         <div class="contenedor_menu_4">
-            <a href="#">Regresar</a>
+            <a href="vigilante_dashboard.php">Regresar</a>
             <a href="registro _ingreso_vehicular.html">
                 <i class="fa-solid fa-file-circle-plus"></i>
                 <a href="inicio_vigilante.html">Nuevo Ingreso</a>
