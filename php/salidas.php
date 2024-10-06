@@ -6,20 +6,9 @@ include('conecta.php'); // Incluir el archivo que establece la conexión a la ba
 // Verificar si el usuario está autenticado y tiene el rol adecuado (en este caso, el rol del Vigilante es 6)
 if (!isset($_SESSION['rol']) || $_SESSION['rol'] != 6) {
     header("Location: login.php?error=Acceso no autorizado"); // Si no está autorizado, redirigir al login con un mensaje de error
-    exit(); // Finalizar el script para evitar que el código siga ejecutándose
+    exit();
 }
 
-// Mostrar el mensaje de éxito si está definido en la sesión
-if (isset($_SESSION['success'])) {
-    echo '<div class="mensaje_exito">' . $_SESSION['success'] . '</div>';
-    unset($_SESSION['success']); // Limpiar el mensaje de éxito después de mostrarlo para evitar que se muestre repetidamente
-}
-
-// Mostrar el mensaje de error si está definido en la sesión
-if (isset($_SESSION['error'])) {
-    echo '<div class="mensaje_error">' . $_SESSION['error'] . '</div>';
-    unset($_SESSION['error']); // Limpiar el mensaje de error después de mostrarlo
-}
 
 try {
     // Consulta para obtener los ingresos que aún no tienen salida registrada
@@ -42,7 +31,7 @@ try {
     <link rel="stylesheet" href="../css/estilos.css"> <!-- Estilos personalizados -->
     <link rel="icon" href="../Imagenes/logo.ico"> <!-- Favicon del sitio -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
         //funcion que filtra los datos en la tabla segun lo que el usuario escriba
@@ -81,25 +70,38 @@ try {
     <main>
         <div class="contenedor_salida_del_personal">
 
-
-            <!-- Mostrar mensaje de éxito si existe -->
-            <?php if (isset($_SESSION['success'])): ?>
-                <div class="mensaje_exito" style="text-align: center; margin: 150px; margin-bottom: 20px; color: hwb(187 2% 74%);">
-                    <?= htmlspecialchars($_SESSION['success']); ?> <!-- para evitar vulnerabilidades XSS -->
-                </div>
-                <?php unset($_SESSION['success']); // Limpiar el mensaje de éxito después de mostrarlo 
-                ?>
-            <?php endif; ?>
             <h1>Registrar Salida del Personal</h1>
+            <!--mostrar mensaje de exito si existe -->
 
-            <!-- Mostrar mensaje de error si existe -->
-            <?php if (isset($_SESSION['error'])): ?>
-                <div class="mensaje_error" style="color: red;">
-                    <?= htmlspecialchars($_SESSION['error']); ?> <!-- para evitar vulnerabilidades XSS -->
-                </div>
-                <?php unset($_SESSION['error']); // Limpiar el mensaje de error después de mostrarlo 
-                ?>
-            <?php endif; ?>
+            <?php
+            if (isset($_SESSION['success'])): ?>
+                <script>
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Éxito',
+                        text: '<?= htmlspecialchars($_SESSION['success']); ?>'
+                    });
+                </script>
+
+            <?php
+                unset($_SESSION['success']); //limpiar el mensaje
+            endif; ?>
+
+            <!--Mostrar mensaje de error si existe-->
+            <?php
+
+            if (isset($_SESSION['error'])) {
+                echo "<script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: '{$_SESSION['error']}'
+                });
+            </script>";
+                unset($_SESSION['error']); // Limpiar el mensaje después de mostrarlo
+            }
+            ?>
+
 
             <!-- Filtro de búsqueda para facilitar la localización de ingresos -->
             <div class="container_buscar">
