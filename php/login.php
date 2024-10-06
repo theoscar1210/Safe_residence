@@ -7,7 +7,12 @@
     <title>Iniciar Sesión Safe Residence</title>
     <link rel="stylesheet" href="../css/estilos.css" />
     <link rel="icon" href="../imagenes/logo.ico" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
 </head>
+
+
 
 <body>
     <main>
