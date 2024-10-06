@@ -29,8 +29,8 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] != 6) { // 6 es el id_rol para 
                 <h1>¡Bienvenido!, <?php echo htmlspecialchars($_SESSION['nombre_usuario']); ?><br> Medio de Ingreso</h1>
                 <!--botones de Ingreso peatonal y vehicular-->
                 <div class="contenedor_botones_ingresos">
-                    <a href="registro_ingreso.php" class="boton_peatonal">
-                        <i class="fa-solid fa-person-walking"></i>Peatonal
+                    <a href="monitor_ingresos.php" class="boton_peatonal">
+                        <i class="fa-solid fa-person-walking"></i>Monitor de Ingresos
                     </a>
 
                     <a href="registro_ingreso.php" class="boton_vehicular">
